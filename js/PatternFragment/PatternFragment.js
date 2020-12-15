@@ -59,42 +59,42 @@ class PatternFragment extends Component {
   };
 
   _onChange = event => {
-    if (event.nativeEvent.eventType === "progress") {	
+    if (event.nativeEvent.eventType === "progress") {
       // let pattern = ''
       // event.nativeEvent.pattern && (pattern = event.nativeEvent.pattern.slice(-1))
 
-      // this.props.onAdd && this.props.onAdd(pattern);	
+      // this.props.onAdd && this.props.onAdd(pattern);
     } else if (event.nativeEvent.eventType === "completed") {
       this.props.onDone && this.props.onDone(event.nativeEvent.pattern);
-    } else if (event.nativeEvent.eventType === "cleared") {	
-      this.props.onCleared && this.props.onCleared();	
-    }	
-	
-    console.log(	
-      "Event: " +	
-        event.nativeEvent.eventType +	
-        ", Pattern: " +	
-        event.nativeEvent.pattern	
-    );	
+    } else if (event.nativeEvent.eventType === "cleared") {
+      this.props.onCleared && this.props.onCleared();
+    }
+
+    console.log(
+      "Event: " +
+        event.nativeEvent.eventType +
+        ", Pattern: " +
+        event.nativeEvent.pattern
+    );
   };
 
   _renderPattern() {
     if (this.props.renderPattern) return this.props.renderPattern()
 
     return (
-      <OnLayout style={{ flex: 1 }}>
+      <OnLayout style={{ flex: 1  }}>
         {({ width, height}) => {
           if (width == 0 && height == 0) {
             return null
           } else {
             return <LockScreen
-              style={{ height: height, width: width }}
+              style={{ height: height  , width: width  , marginLeft: "16%" }}
               props={{
-                  width: width,
-                  height: height,
+                  width: width /1.5 ,
+                  height: height/1.5,
                   dotCount: this.props.dotCount,
-                  dotNormalSize: this.props.dotNormalSize,
-                  dotSelectedSize: this.props.dotSelectedSize,
+                  dotNormalSize: this.props.dotNormalSize *  2,
+                  dotSelectedSize: this.props.dotSelectedSize * 2,
                   pathWidth: this.props.pathWidth,
                   aspectRatioEnabled: this.props.aspectRatioEnabled,
                   aspectRatio: this.props.aspectRatio,
@@ -120,9 +120,9 @@ class PatternFragment extends Component {
     </View>;
   }
 }
-	
-const LockScreen = requireNativeComponent("RNLockScreen", PatternFragment, {	
-  nativeOnly: { onChange: true }	
+
+const LockScreen = requireNativeComponent("RNLockScreen", PatternFragment, {
+  nativeOnly: { onChange: true }
 });
 
 export { PatternFragment };
